@@ -1,0 +1,826 @@
+16（序列）、学习内容：
+	1、列表、元组和字符串的共同点：
+		可以通过索引得到每一个元素
+		默认索引值总是从0开始
+		可以通过分片的方法得到一个范围内的元素的集合
+		有很多共同的操作
+		
+	2、使用list([iterator]),tuple([iterator])可以将一个迭代对象转换为列表、元组，使用str(obj)可以把obj对象转换为字符串
+	3、迭代：重复反馈过程的活动，其目的通常是接近或达到所需的目标或结果，每一次对过程进行重复我们称之为迭代，每一次迭代的结果都会被作为下次迭代的初始值。
+	4、使用max(), min()取最大最小值时需要保证参数的数据类型统一
+	5、sum(iterable[, start=0])返回序列iterable和可选参数start的总和，其中参数需要是可运算的数据类型
+	6、sorted()可实现排序功能
+	7、reversed()返回一个迭代器对象，可通过list(reversed(NAME))查看结果
+	8、emumerate()返回一个枚举对象，可通过list(emumerate(NAME))查看结果
+	9、zip返回zip对象，可通过list(zip(A,B))查看结果，实现A,B配对打包，多余元素将被舍弃。
+17（函数）、学习内容
+	DRY(程序员公认的指导原则):Don't Repeat Yourself.
+	1、使用def FUNCTIONNAME():定义函数
+	2、在小括号中使用","隔开函数参数
+	3、通过关键字return返回函数值
+18（函数）、学习内容：
+	1、形参是函数定义过程中的一个变量名，表示占据一个参数位置
+	2、实参是调用函数时传递进来的参数，是具体的参数值
+	3、可以使用FUNCTIONNAME.__doc__或help(FUNCTIONNAME)查看函数内的函数文档
+	4、使用关键字参数：在调用函数输入参数时将参数值赋值给形参
+	5、默认参数：在定义函数是给形参赋一个默认值
+	6、收集参数：当无法确定函数参数个数时使用
+		def FUNCNAME(*params):
+		此时调用函数输入的参数将会被打包至params的元组中
+		（在需要使用收集参数及其它参数时，建议将其它参数设置为默认参数）
+19（函数变量）、学习内容：
+	1、函数有返回值，过程比较简单、特殊并且没有返回值
+	2、Python严格来说只有函数没有过程，因为Python会有一个默认的None返回对象
+	3、可以使用列表使函数返回多个值。或使用逗号隔开多个返回值，此时函数会将变量打包为一个元组并返回
+	4、在Python中，函数可以任意访问全局变量，但不能直接修改全局变量，否则Python会在函数中自动创建一个与全局变量同名的局部变量	
+20（内嵌函数和闭包）、学习内容：
+	1、若要在函数中修改全局变量，则需要在函数内使用global关键字修饰全局变量
+	2、内嵌函数：在函数体内定义的新的函数，内嵌函数只能在函数体内随意调用，在全局域中无法调用
+	3、闭包：如果在一个内部函数里，对在外部作用域的变量进行引用，则这个内部函数就是一个闭包。
+		若要在闭包中修改修改外部作用域的变量可以将外部放入容器类型中（列表），或使用关键字nolocal关键字修饰外部变量。
+21（lambda表达式）、学习内容：
+	1、lambda(匿名函数)表达式的使用：g = lambda PARAM : OPERATE
+	2、lambda表达式的作用：
+		Python写一些执行脚本时，使用lambda就可以省下定义函数过程，比如说需要写个简单的脚本来管理服务器时间，我们就不需要专门定义一个函数然后再写调用，使用lambda就可以使代码更加精简。
+		
+		对于一些比较抽象并且整个程序执行下来只需要调用一两次的函数，有时候给函数起个名字也是很让人头疼的事情，使用lambda就不需要考虑命名的问题了。
+		
+		简化代码的可读性，由于普通的屌丝函数阅读经常要跳到开头def定义部分，使用lambda函数可以省去这样的步骤。
+	3、使用filter(function or None, iterable)过滤器筛选需要的内容
+		第一个参数为None则将第二个参数中为True的值筛选出来
+		第一个参数为函数，则将第二个参数的元素作为函数参数，将函数中返回为True的值筛选出来。
+	4、map(function, iterable):
+		将第二个参数的每个元素作为函数的参数进行加工并返回加工完成后的新序列
+22（递归）、学习内容：
+	1、设置递归深度：
+		import sys
+		sys.setrecursionlimit(LIMIT)
+	2、递归需要满足的条件：
+		1、有调用自身的行为
+		2、有一个正确的返回条件
+	3、递归对资源的占用比较大
+25（字典）、学习内容：
+	1、字典不是序列类型，而是映射类型
+	2、字典的创建：
+		dict1 = {key:value,key:value}
+		dict2 = dict(param)
+		dict3 = dict(key=value,key=value)
+	3、在通过key赋值时，若key不存在则添加一个键值组。
+26（字典）、学习内容：
+	1、DICT.fromkeys(keys,value)创建并返回一个新的字典
+	2、DICT.keys():返回键的引用
+	3、DICT.values():返回值的引用
+	4、DICT.items():返回整个项的引用（以元组的形式返回）
+	5、DICT.get(key[,default]):判断一个键是否在字典中并返回None/default
+	6、DICT.clear(): 清空字典
+	7、浅拷贝：DICT.copy()，拷贝至新的地址
+	8、删除数据：DICT.pop(key), DICT.popitem() —— 随机删除一个项
+	9、DICT.setdefault(key[, value]): 添加元素
+	10、DICT.update(DICT2): 利用DICT2的映射关系更新DICT
+27(集合）、学习内容：
+		1、{}括起来的没有映射的值
+		2、集合里边的元素具有唯一性
+		3、集合是无序的
+		4、创建集合：{}， set()工厂函数
+		5、可以使用for访问集合中的值
+		6、可以使用in/not in判断元素是否存在集合中
+		7、SET.add(value):添加元素
+		8、SET.remove(value):删除元素
+		9、定义不可变的集合（冻结集合）：frozenset()
+28（文件）、学习内容：
+		1、打开文件：open()返回一个文件对象
+		2、关闭文件：f.close, 
+		3、读取文件：f.read(size=-1), f.readline()
+		4、写入文件：f.write(str), f.writelines(seq)
+		5、定位：f.seek(offset,from)
+		6、返回当前在文件中的位置：f.tell()
+30（文件系统）、学习内容：
+		1、os, os.path模块的使用，参见拓展阅读
+31（永久存储-pickle）、学习内容：
+		1、pickle:几乎可以把所有python的对象都转换为二进制的形式存放
+		2、pickle.dump(values, file)：将values存放到文件file中
+		3、pickle.load(pickle_file)：读取pickle文件
+32、33（异常处理）、学习内容：
+		1、将扩展阅读：标准异常
+		2、
+		try:
+			检测范围
+		except Exception[as reason]:
+			出现异常 （Exception）后的处理
+		finally:
+			无论如何都会被执行的代码
+		3、reason是出错的原因
+		4、同时捕获多个error：except （Exception,...）
+34（else和with)、学习内容：
+		1、else可以与if语句, while语句, try语句搭配使用
+		2、1、with ... as ...: with 会自动关闭不使用的文件
+35（GUI）、学习内容：看扩展文档
+36（对象）、学习内容：
+		1、类包含属性和方法
+		2、类的继承：class NAME(PARENT):
+		3、面向对象编程的特点：多态，封装，继承
+		4、Python中的类名规定以大写字母开头
+37（类和对象）、学习内容：
+		1、self相当于c中的this指针
+		2、Python的魔法方法：__init__(self)，python类的初始化方法
+		3、公有和私有：默认都是公有
+		4、name mangling技术（名字改编，名字重整）：
+			在Python中定义私有变量只需要变量名或函数名前加上"__"两个下划线
+		5、私有变量可通过方法获得
+		6、__name == _类名__name: 目前为伪私有
+38（类和对象：继承）、学习内容：
+		1、class DerivedClassName(BaseClassName):
+		2、重写父类函数需要继承子类的方法：
+			在重写的方法中：
+			：调用未绑定的父类方法 —— Pname.function(self)
+			：（推荐使用）使用super函数 —— super().function()
+		3、python支持多重继承：class name(base1,base2...)
+		4、super函数不需要明确给出任何基类的名字，它会自动帮你找出所有基类以及对应的方法。由于你不用给出基类的名字，这就意味着你如果需要改变类继承关系，你只要改变class语句里的父类即可，而不必在大量代码中去修改所有被继承的方法。
+39(类和对象）、学习内容：
+		1、组合：Python继承机制很有用，但容易把代码复杂化以及依赖隐含继承。因此，经常的时候，我们可以使用组合来代替。在Python里组合其实很简单，直接在类定义中把需要的类放进去实例化就可以了。
+		2、类定义属性是静态属性，类对象属性是动态属性，可被实例对象覆盖
+		3、若属性名与方法名相同，属性会把方法覆盖掉
+		4、因此需要遵循：
+			不要试图在一个类里边定义出所有能想到的特性和方法，应该利用继承和组合机制来进行扩展。
+			用不同的词性命名，如属性名用名词，方法名用动词。
+		5、类中定义的属性和方法都是静态的，存放在内存中，只有退出程序时才会被删除
+        6、组合使用的场景：A have a B; 继承应用场景：A is a B;
+40（类和对象）、学习内容：
+		1、issubclass(class, classinfo):判断一个类是否是另一个类的子类
+			非严格的判断：1、一个类被认为是自身的子类
+				2、classinfo可以是类对象组成的元组，只要class是其中任何一个候选类的子类，则返回True
+		2、isinstance(object, classinfo):检查一个实例对象是否属于一个类
+			1、如果第一个参数不是对象，则永远返回False
+			2、如果第二个参数不是类或者由类对象组成的元组，会抛出一个TypeError异常
+			3、访问对象属性：
+			hasattr(object, name)：测试一个对象是否有指定的属性
+			getattr(object, name[, default]):返回对象指定的属性值，若不存在打印default/erro异常
+			setattr(object, name):设置指定属性值，若不存在则新建一个
+			delattr(object, name): 删除指定属性，不存在抛出异常
+			4、通过属性来设置属性：property(fget=None, fset=None, fdel=None, doc=None): fget、gset、fdel都是自己编写的方法
+		3、Python的修饰符：@timeslong
+            Python内置的修饰符：staticmethod\classmethod\property, 作用分别是把类中定义的实例方法变成静态方法、类方法和类属性。
+41（魔法方法）、学习内容：
+        1、魔法方法总是被双下划线包围，例如__init__
+        2、魔法方法是面向对象的python的一切
+        3、__init__(self[, ...])  相当于其它语言的构造方法
+        4、__init__()：没有返回值
+        5、python第一个调用的方法：__new__(cls[, ...])（需要返回对象，平时极少重写，继承不可变的特性并需要对其进行修改时重写 ）
+        class CapStr(str):
+            def __new__(cls, string):
+                string = string.upper()
+                return str.__new__(cls, string)
+        6、垃圾回收机制：__del__(self):对象销毁时效用
+            del obj != __del__
+42（魔法方法）、学习内容：
+        1、python2.2后对类和类型进行统一，工厂函数（类对象）
+        2、python无处不对象，
+        3、python支持鸭子类型（duck typing）风格
+43（算术运算）、学习内容：
+        1、扩展阅读
+        2、反运算：__radd__(self, other): 
+            1 + b == __radd__(b, 1)
+        3、静态方法不会绑定到实例对象上，换言之就是节省开销（只在内存中生成一个，普通方法每个实例对象都拥有独立的一个）
+44（简单定制）、学习内容：
+        0、time模块的localtime方法获取时间——扩展阅读
+        1、time.localtime返回struct_time的时间格式
+        2、__str__和__repr__方法
+45（属性访问）、学习内容：
+        0、属性的相关BIF：getattr()...
+        1、__getattr__(self, name)
+            - 定义当用户试图获取一个不存在的属性时的行为
+           __getattribute__(self, name)
+            - 定义该类的属性被访问时的行为
+           __setattr__(self, name, value)
+            - 定义当一个属性被设置时的行为
+           __delattr__(self, name)
+            - 定义当一个属性被删除时的行为S
+        2、死循环陷阱
+            setattr: 
+            方法一、使用super().__setattr__()解决
+            方法二、self.__dict__[name] = value
+46（描述符-property）、学习内容：
+        1、描述符就是将某种特殊类型的类的实例指派给另一个类的属性
+        特殊类型的类至少需要实现以下方法中的一个：
+        __get__(self, instance, owner)
+        - 用于访问属性，它返回属性的值
+        __set__(self, instance, value)
+        - 将在属性分配操作中调用，不返回任何内容
+        __delete__(self, instance)
+        - 控制删除操作，不返回任何内容
+        2、访问实力层次上的描述符只会返回标识符本身，为了描述符能够正常工作，它们必须定义在类的层次。
+            实例层次：
+            class Demo:
+                def __init__(self):
+                    x = property()
+            类层次：
+            class Demo:
+            x = property()
+47（定制序列-容器）、学习内容：
+        1、定制不可变的容器，只需要定义__len__(self)和__getitem__(self, key)方法
+        2、定制可变容器，除了需要定义__len__()和__getitem__()方法，还需要定义__setitem__(self, key, value)和__delitem__(self, key)方法
+48（魔法方法-迭代）、学习内容：
+        1、iter()、next()方法
+        class Fibs:
+            def __init__(self, n=10):
+                self.a = 0
+                self.b = 1
+                self.n = n
+            def __iter__(self):
+                return self
+            def __next__(self):
+                self.a, self.b = self.b, self.a + self.b
+                if self.a > self.n:
+                    raise StopIteration
+                return self.a 
+        fibs = Fibs(100)
+        for each in fibs:
+            print(each)
+49（乱入-生成器）、学习内容：
+        1、生成器使用函数即可实现
+        2、生成器是迭代器的一种实现——使代码更加简洁
+        3、生成器的实现使python模仿协同程序得以实现
+        协同程序：就是可以运行的独立函数调用，函数可以暂停或者挂起，并在需要的时候有从程序离开的地方继续或者重新开始。
+        4、generator-生成器：关键字——yield（相当于return）
+        def myGen():
+            print("生成器被执行!")
+            yield 1
+            yield 2 
+        myG = myGen
+        next(myG)   #1
+        next(myG)   #2 
+        5、列表推倒式：a = [ i for i in range(100) if not (i % 1) and i % 3]
+            输出100以内能被2整除的数
+        6、字典推倒式：b = {i:i%2 == 0 for i in range(10)}
+        7、生成器推倒式：（），可直接作为函数的参数使用
+            sum(i for i in range(100) if i % 2)
+            把100以内不能被2整除的数加起来
+        8、生成器拓展阅读
+50、（模块）、学习内容：
+        1、容器：数据的封装
+        2、函数：语句的封装
+        3、类：方法和属性的封装
+        4、模块：模块就是程序
+        5、命名空间(示例：)
+            import model
+            model.FUNCNAME()
+        6、导入模块
+        方法一：
+            import 模块名
+        方法二：
+            from 模块名 import 函数名
+        方法三：
+            import 模块名 as 新名字 
+51、（模块：）
+        1、主程序中：__name__='__main__'， 作为导入的包：__name__得到的是名称
+        2、搜索路径
+            sys.path：输出Python搜索路径——模块最佳存放位置site-packages
+        3、包
+            1、创建一个文件夹，用于存放相关的模块，文件夹的
+            名字即包的名字；
+            2、在文件夹中创建一个__init__.py的模块文件
+            内容可以为空
+52、（向个极客一样去思考）
+        1、Python自己带着电池（Batteries included）
+            --Python标准库
+        2、IT英语板块——每天进步一点点
+        3、Python模块社区：pypi.python.org/pypi
+        4、PEP是Python enhancement proposals的缩写，（Python
+            增强建议书），用于规范Python的技术规范
+        5、模块过滤属性：NAME.__all__
+        6、NAME.__file__：指明源代码路径
+53、（论一只爬虫的自我修养）
+        1、urllib
+            url(协议，域名系统
+        2、urllib.request.urlopen
+            import urllib.request.urlopen()
+            response = url.request.open()
+            html = response.read()
+            html = html.decode("utf-8")
+        3、设计爬虫时需要特别注意无限地柜问题
+        不要重复爬取同一个URL的内容（如果一个URL的内容中包含它本身，那么就会陷入无限递归）
+        4、网站开发者如何禁止爬虫访问站中敏感内容
+            》1：禁止IP
+            》2：robot.txt --》 声明网站不想被robot访问的内容
+            》3：服务器配置
+        5、urllib.request.urlopen()返回数据类型：http.client.HTTPResponse对象（属于http.client模块）
+        6、访问不存在的网址会产生HTTPError异常
+        7、response.read(300)：指明仅读取前300个字符
+        8、存储网页内容时，在创建文件open(filename,'mode',encoding = encode)需要指定编码格式（即decode为什么格式，这里就要使用该格式进行存储，否则报错）
+        
+54、（论一只爬虫的自我修养2——实战）
+        1、placekitten.com
+        2、urllib.request, urllib.parse, json
+        3、Python编码问题的解决方案（板块中）
+        4、encode('utf-8'): 将unicode编码形式转换为utf-8编码形式
+        5、decode('utf-8')：将其它形式的编码（utf-8）转换为Unicode编码形式
+        6、urlopen()方法的timeout参数用于设置连接的超时时间，单位是喵。
+        7、获取HTTP状态码
+            response = urllib.request.urlopen(url)
+            code = response.getcode()
+        8、客户端和服务器之间进行请求响应最常见的两种方法：POST 和 GET
+        9、User-Agent属性：
+            普通浏览器会通过该内容向访问网站提供你所使用的浏览器类型、操作系统、浏览器内核等信息的标识
+        10、json是一种轻量级的数据交换语言，说白了就是用字符串吧Python的数据结构封装起来，便于存储和使用
+55、（论一只爬虫的自我修养3——隐藏）
+        1、添加header(设置自己的header):
+            request对象生成之前：urllib.request.Request(url , data, head)
+            生成之后：req = urllib.request.Request(url , data) , req.add_headers('key','value')
+        2、防止网站拒绝访问
+            方法一：延迟爬虫提交时间：time模块
+            方法二：使用代理
+                步骤：
+                1、参数是一个字典{'类型' : '代理ip:端口号'}
+                proxy_support = urllib.request.ProxyHandler({})
+                2、定制和创建一个opener
+                opener = urllib.request.build_opener(proxy_support)
+                3a、安装opener
+                urllib.request.install_opener(opener)
+                3b、调用opener
+                opener.open(url)
+       3、显示访问网站的来源ip：http://www.whatismyip.com.tw
+56、（论一只爬虫的自我修养4——OOXX）
+        1、使用handler后读取的图片来源错误
+57、（论一只爬虫的自我修养5：正则表达式）
+        1、import re
+        2、re.search()方法：用于在字符串中搜索正则模式第一次出现的位置
+        3、“.”：匹配除了换行符以为的任何字符
+        4、“\d”：匹配数字；“[]”：匹配范围；“{}”：匹配次数
+        5、...看拓展阅读
+        6、匹配首个满足条件的字符串：re.search(r'[0-1]{0,1}\d{0,1}\d|[2][0-4]\d|[2][5][0-5]','192.168.1.1')
+        7、匹配所有满足条件的字符串：re.findall(r'[0-1]{0,1}\d{0,1}\d|[2][0-4]\d|[2][5][0-5]','192.168.1.1')
+        8、匹配IP地址：
+        re.search(r'(([0-1]{0,1}\d{0,1}\d|[2][0-4]\d|[2][5][0-5])\.){3}([0-1]{0,1}\d{0,1}\d|[2][0-4]\d|[2][5][0-5])','192.168.1.1')
+
+58-59、（论一只爬虫的自我修养6：正则表达式）
+        1、拓展阅读
+        2、编译正则表达式：如果需要重复的使用一个正则表达式时，那么可以先将该正则表达式编译成模式对象 ==》 使用re.compile()方法来编译正则表达式
+        3、模块级别与正则表达式效率区别不大，主要看应用环境进行选取
+        4、基本正则表达式不支持空格、换行
+        5、详细正则表达模式：支持空格、换行、tab、注释
+        
+60、（论一只爬虫的自我修养8：正则表达式）
+        1、返回匹配字符串：result = re.search(pattern,string,flag=0)
+            result.start(), result.group(), result.end(), result.span():范围
+        2、返回regex.search(string[,pos[,endpos]])
+        3、re.findall(pattern, string, flag=0)
+
+61、（论一只爬虫的自我修养9：异常处理）
+        1、URLError
+        >>> import urllib.error
+        >>> req = urllib.request.Request("http://ww.ooxx-fishc.com")
+        >>> try:
+            urllib.request.urlopen(req)
+        except urllib.error.URLError as e:
+            print(e.reason)
+
+            
+        [Errno 11001] getaddrinfo failed
+        
+        >>> req = urllib.request.Request("http://ww.ooxx-fishc.com")
+        >>> try:
+            urllib.request.urlopen(req)
+        except urllib.error.HPPTError as e:
+            print(e.code)
+            print(e.read())
+        
+       处理异常的推荐写法：
+        from urllib.request import Request, urlopen
+        from urllib.error import URLError
+        req = Request(someurl)
+        try:
+            response = urlopen(req)
+        except URLError as e:
+            if hasattr(e, 'reason'):
+                print('We failed to reach a server.')
+                print('Reason: ', e.reason)
+            elif hasattr(e, 'code'):
+                print('The server couldn\'t fulfill the request.')
+                print('Error code: ', e.code)
+        else:
+        # everything is fine
+62、（论一只爬虫的自我修养10：安装Scrapy）
+        1、Scrapy
+            是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一些列的程序中
+            
+            Scrapy最初是为了页面抓取（更确切的说，网络抓取）所设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通过网络爬虫。
+        2、解决编码问题：设置默认编码（安装程序时会自动调用）
+        在site-packages下新建：sitecumtomize.py
+            import sys
+            sys.setdefaultencoding('gd2312')
+        3、安装过程出现错误：error: Microsoft Visual C++ 9.0 is required
+            解决方法：安装VcforPython27.msi
+
+63、（论一只爬虫的自我修养11：Scrapy框架初窥门径）
+        1、使用Scrapy抓取一个网站一共需要四个步骤：
+        --创建一个Scrapy项目
+        --定义Item容器
+        --编写爬虫
+        --存储内容
+        2、Item容器：
+            Item是保存爬取到的数据的容器，其使用方法和python字典类似，并且
+        提供了额外保护机制来避免拼写错误导致的未定义字段错误
+        3、Spiter:
+            Spiter是用户编写用于从网站上爬取数据的类，
+            其包含了一个用于下载的初始URL，然后是如何跟进网页中的链接以及如何分析页面中的内容，还有提取生成item的方法。
+        4、在Scrapy中是使用一种基于XPath和CSS的表达式机制：Scrapy Selectors.
+        Selector是一个选择器，它有四个基本的方法：
+            xpath(): 传入xpath表达式，返回该表达式所对应所有节点的selector list列表。
+            css(): 传入css表达式，返回该表达式所对应所有节点的selector list列表。
+            extract(): 序列化该节点为unicode字符串并返回list。
+            re(): 根据传入的正则表达式对数据进行提取，返回unicode字符串list列表。
+        5、XPath
+            XPath是一门在网页中查找特定信息的语言，所以用XPath来筛选数据，要比使用正则表达式容易些。
+            response.xpath() == response.selector.xpath()
+            获取title文本：response.xpath('//title/text()').extract()
+        6、导出所需内容：
+            scrapy crawl dmoz -o items.json -t json
+64、（GUI的终极选择——Tkinter）
+        1、界面需要一个主体架构：app = tk.Tk()
+        2、最后需要提交界面完成，让其循环执行：app.mainloop()
+        3、添加标签：Label = tk.Label(app, text='something')
+        4、添加按钮：Button = tk.Button(app, text='something',command=点击触发事件函数)
+        5、控件提交：Widge.pack()
+        6、设置对齐方式及边距：pack(side = tk.LEFT, padx = 10, pady = 10)
+65\
+        1、设置组件对齐方式：justify
+        2、图片中的文本布局方式：compound=CENTER
+        3、布局组件：frame
+66、
+        1、Checkbutton：多选
+        2、Radiobutton：单选
+        3、设置对齐方式--anchor：b.pack(anchor=W)
+        4、设置选中不使用圆点，可设置indicator=False，则改为按钮模式
+        5、设置横向填充：fill=X
+        6、LableFrame：添加了Label的frame —— 看起来与java中的面板一致
+67、
+        1、输入框组件：Entry
+            插入操作：insert(index, text)
+            获取操作：get()
+            grid布局中的对齐属性：sticky=W
+            设置输入内容显示方式属性：show="*"
+            验证输入内容的合法性：validate="focusout", validatecommand=test, invalidcommand=test2)
+                检测是否合法：执行test,不合法：执行test2
+            设置为只读：state="readonly"（支持复制）
+        2、tkinter额外选项：%d...
+            %P 当前输入框值
+            %v 该组件当前validate选项的值
+            %W 该组件的名字
+            validatecommand(test, %P, %v, %W) --> test(context, reason, name)
+68、
+        1、Listbox: 列表显示
+            theLB.delete(ACTIVE)：删除当前选中项
+            设置显示行数：height=NUM
+            添加滚动条：
+            1、设置该组件的yscrollbarcommand选项为Scrollbar组件的set()方法
+            2、设置Scrollbar组件的command选项为该组件的yview()方法
+                sb = Scrollbar(root)
+                sb.pack(side=RIGHT, fill=Y)
+
+                lb = Listbox(root, yscrollcommand=sb.set)
+
+                for i in range(1000):
+                    lb.insert(END, i)
+
+                lb.pack(side=LEFT, fill=BOTH)
+
+                sb.config(command = lb.yview)
+
+
+        2、selectmode属性：设置鼠标滑动效果
+            默认根据焦点高亮显示（动态）
+            selectmode = SINGLE -- 单选（静态）
+            EXTENDED -- 按中ctrl可多选，shift跳跃多选
+        3、Scale组件：对应android中的seekbar   
+            Scale(root, from_=0, to=42, tickinterval=5, resolution=5, length=200).pack()
+            Scale(root, from_=0, to=200, orient=HORIZONTAL, tickinterval=5, resolution=5, length=600).pack()
+            获取值：get()
+            设置精度属性：tickinterval
+            步长：resolution
+            设置长度：length
+69、
+        1、Text组件：
+            索引值：INSERT:插入光标所处位置、CURREN...
+            定位（line.column）:"%d.%d" % (line, column) —— 行号以1开始，列好以0开始
+            插入按钮（窗口组件）：text.window_create(INSERT, window=botton1)
+            插入图片：text.image_create(END, image=photo)
+            marks: 标记，表示位置时即索引
+                text.mark_set("here", "1.2")
+                text.insert("here", "insert")
+                使mark插入内容在mark的右边:
+                text.mark_gravity("here", LEFT)
+                
+            tags: 标签
+                text.tag_add("tag1", "1.7", "1.12")
+                text.tag_config("tag1",background="yellow",foreground="red")
+                下划线属性：underline=True
+                绑定：绑定事件需要传入event参数
+                text.tag_bind("link","<Enter>",show_arrow_cursor)
+                    link: tag名称
+                    <Enter>: 获取到鼠标焦点时
+                    show_arrow_cursor：回调函数
+                        text.tag_config(cursor="arrow") -- 设置鼠标样式
+                    <Leave>: 鼠标离开时
+                        text.tag_config(cursor="xterm") -- 设置鼠标样式
+                    <Button-1>: 点击鼠标左键
+            打开网页：需要使用模块 webbrowser
+                webbrowser.open("url")
+            获取md5散列：需要导入模块 hashlib
+                m = hashlib.md5(contents.encode())
+                用于检测文本内容等是否发生变动
+            搜索：
+            while True:
+                pos = text.search("o", start, stopindex=END)
+                if not pos:
+                    break;
+                getIndex = tuple(map(int, str.split(text.index())))
+                print(getIndex)
+                start = pos + "+1c" -- 指向下一个字符
+            实现撤销/恢复操作：
+                给text添加属性：undo=True
+                撤销按钮事件函数中添加语句：text.edit_undo()
+                恢复同理：edit_redu
+                
+                取消自动检测一次完整输入：
+                    给text添加属性：autoseparators = False
+                    绑定<key>事件：text_edit_separator() -- 人为的插入一个分隔符（即每输入一个字符即为一次完整输入）
+71、     
+        1、Canvas组件
+            w = Canvas(root, width=200, height=100)
+            添加线条：
+            line1 = w.create_line(0, 50, 200, 50, fill="yellow")
+            line2 = w.create_line(100, 0, 100, 100, fill="red", dash(4,4)) -- 虚线
+            矩形：
+            rect1 = w.create_rectangle(x1,y1,x2,y2,fill="color")
+            对组件进行修改的方法：
+            w.coords(line1, 0, 25, 200, 25) -- 移动组件
+            w.itemconfig(rect1, fill="newColor") -- 设置属性
+            w.delete(line2) -- 删除对象
+            
+            Button(root, text="删除全部", command=(lambda x=ALL:w.delete(x))).pack()
+            文本
+            w.create_text(100, 50, text="TEXT")
+            圆形、椭圆形：
+            w.create_oval(x1, y1, x2, y2, fill="COLOR")
+            绘制自定义图形：（根据中心坐标(自行给定)确定各节点坐标，从而进行绘制）
+            w.create_polygon(points, ountline="COLOR", fill="COLOR")
+            poins: 各节点按顺序排好的列表
+            fill: 默认为黑色，若设置为空字符串--》透明
+        2、看文档、画个哆啦A梦
+73、
+        1、给窗口添加菜单：
+            menubar = Menu(root)
+            menubar.add_command(label="hello", command=callback)
+            root.config(menu=menubar)
+        2、添加下拉菜单
+            menubar = Menu(root)
+            filemenu = Menu(menubar， tearoff=False)
+            -- tearoff 默认级联菜单会有一条虚线 ， 点击后将级联菜单独立弹出
+            filemenu.add_command(label="打开", command=callback)
+            filemenu.add_command(label="保存", command=callback)
+            filemunu.add_separator() -- 分割线
+            filemenu.add_command(label="退出", command=root.quit)
+            menubar.add_cascade(label="文件", menu = filemenu)
+            -- add_cascade 级联菜单
+            root.config(menu=menubar)
+        3、弹出菜单
+            def popup():
+                menubar.post(event.x_root, event.y_root)
+            frame.bind("<Button-3>",popup)
+            -- 点击右键弹出菜单
+        4、点击按钮弹出菜单
+            mb = Menubutton(root, text="TEXT", relief=RAISED)
+            mb.pack()
+            filemenu = Menu(mb, tearoff=False)
+            filemenu.add_command(label="打开", command=callback)
+            filemenu.add_command(label="保存", command=callback)
+            filemunu.add_separator() -- 分割线
+            filemenu.add_command(label="退出", command=root.quit)
+            mb.config(menu=filemenu)
+        5、选项菜单(下拉列表效果），选中修改菜单文本
+            w = OptionMenu(root, variable, "one", "two", "three")
+            w.pack()
+            通过在形参前加一个星号（*）-列表/元祖或两个（**）-字典，来指定函数，可以接受任意数量的实参
+            OPTIONS = ['','','','',]
+            root = Tk()
+            variable = StringVar()
+            variable.set(OPTIONS[0])
+            
+            w = OptionMenu(root, variable, *OPTIONS)
+            w.pack()
+74、事件绑定（bind）
+        1、键盘事件需要设置焦点：frame.focus_set()
+            敲击键盘事件：<Key>
+            获取鼠标实时位置事件-不需要点击：<Motion>
+            获取用户取的具体按键：event.keysym
+        2、使用事件序列自定义事件<modifier-type-detail>
+            type：描述事件类型 -- 必须要有  ButtonRelease/KeyPress
+            modifier：描述组合键ctrl
+            detail: 描述具体按键- Button-1
+        tkinter这块记得看拓展阅读中的文档
+75、
+        1、Mesage组件：Label组件的变体，可显示多行文本
+            支持换行（自动换行，也可强制换行）
+        2、Spinbox组件：Entry组件的变体-从固定的值中取一个（例如0-10）
+            wrap：使可选范围循环
+        3、PanedWindow空间管理组件：
+            拖动窗口大小或拖动窗体时：组件动态更新布局
+        4、Toplevel组件：独立顶级窗口-含标题栏、边框等部件。
+            Tk、Toplevel方法汇总 --》 拓展阅读
+            attributes属性设置比较特殊:top.attributes("-alpha", 0.5)
+76\
+        1、Tkinter布局管理器：pack, grid, place
+            pack: 少量组件的排列
+            grid： 适合创建比较复杂的布局
+                rowspan --> 合并单元格--行
+             --》 不要再一个父组件中混合使用pack和grid
+        ·   place: 相对布局--》相对于父组件 relx\rely\relwidth\relheight\anchor=CENTER)
+77\
+        1、Tkinter提供了三种标准对话框模块
+            messagebox --》 返回True， False  yes/no
+            fileddialog
+                打开文件，保存文件时使用
+            colorchooser
+                颜色选择对话框 -- 弹出颜色选择面板
+                 返回RGB值以及16进制表示
+            看拓展阅读
+78、（Pygame）
+        1、绘图，图片，支持外设，碰撞检测，音效...
+        2、pygame采用双缓冲模式绘图：加快绘图速度及避免闪烁现象
+            在内存在建立一个与屏幕绘制区域一模一样的对象，将需要绘制的对象写入该对象，
+            全部写完后，将该对象一次性显示于屏幕中。
+78、（解惑）
+        1、什么是Surface对象：方法 --》 fill(), blit()
+            Pygame中用于表示图像的对象 即 图像对象
+        2、将一个图像绘制到另一个图像上是怎么一回事？
+            blit()：修改另一个图像的对应位置的像素，从而达到覆盖的效果
+        3、移动图像
+            帧率：每秒切换多少张图片 （Pygame支持 40-200）
+            clock = pygame.time.Clock()
+            clock.tick(200) 
+        4、如何控制游戏速度：
+            延迟：pygame.time.delay()
+        5、Pygame的效率高不高
+            大部分模块都是由C语言写的
+            效率可以接受
+        6、Pygame获取帮助的途径
+            官网文档
+79、（事件）
+        1、去除potplayer左上角消息；参数设置→基础→消息→播放信息设置→在屏幕上显示播放信息（√）去掉
+        1、
+81
+        1、返回Surface对象，set_mode(resolution=(0,0), flags=0, depth=0)
+            resolution：指定界面大小
+            flags: 拓展选项 --》 全屏，双缓冲模式...
+                全屏模式：可开启硬件加速
+                
+                获取屏幕分辨率：resolution = pygame.display.list_modes()[0] -- 当前屏幕支持的最高分辨率
+                screen = pygame.display.set_mode(resolution, FULLSCREEN | HWSURFACE)
+            depth: 颜色位数 --》 一般不用设
+82
+        1、chop方法：turtle = pygame.transform.chop(oturtle, (207, 200, 50, 50))
+            将一块区域刨去，周围像素自动向中心移动
+        2、subsurface：capture = screen.subsurface(select_rect).copy()
+83
+        1、pygame使用图片需要在载入图片时调用convert()方法 --> 像素格式转换
+            否则每次blit时都会强制进行转换，为了效率更高应该载入时马上进行转换
+            bg = pygame.image.load("bg.jpg").convert()
+        2、convert_alpha() --> rgba格式：a: 透明度（0-255）
+            turtle = pygame.image.load("tuttle.png").convert_alpha() # 实现背景透明
+            position = turtle.get_rect()
+            position.center = width // 2, height // 2
+            tuttle.get_at(position.center): 获取指定位置的像素信息（R,G,B,A）A：透明度
+            turtle.set_at(position.center, 200): 设定指定点的像素
+        3、turtle = pygame.image.load("tuttle.jpg").convert() --》 支持set_colorkey、set_alpha，可混合使用
+            turtle.set_colorkey((255.255.255))：指定白色变透明 --》效果不佳
+            turtle.set_alpha(200): 指定整个图像的透明度 --》效果不佳
+        4、为了使png图片能够透明显示可以通过以下方式实现
+            x = position[0]
+            y = position[1]
+            print(x,y, position)
+
+            screen.blit(background, (0,0))
+            #screen.blit(screen,(x,y))
+            temp = pygame.Surface((turtle.get_width(), turtle.get_height())).convert()
+            temp.blit(screen, (-x, -y)) #假设一张图片置于画布中，将图片向左、向右平移x、y个单位，此时置于画布中的图像即为原图像的(x,y)坐标起始的图像
+            temp.blit(turtle, (0,0))
+            temp.set_alpha(200)
+84
+        1、基本图形的绘制
+            绘制矩形：
+                pygame.draw.rect(screen,BLACK,(50,50,150,50),0) # 填充矩形
+                pygame.draw.rect(screen,BLACK,(250,50,150,50),1) # 填充边框，边框宽度为1
+                pygame.draw.rect(screen,BLACK,(450,50,150,50),10)
+            
+            绘制多边形：
+                pygame.draw.polygon(screen, GREEN, points, 0) # 填充整个图形
+                    # points 图形顶点坐标列表
+            
+                
+            绘制圆形：
+                pygame.draw.circle(screen,RED,position, 25, 1)
+                 # 25：半径
+            绘制椭圆形：
+                ellipse(Surface, color, Rect, width=0)
+            绘制弧线：
+                arc(Surface, color, Rect, start_angle, stop_angle, width=1)
+                pygame.draw.arc(screen, RED, (100,100,300,300), 0, math.pi, 1) # 使用弧度
+            绘制线段：
+                单条：
+                    line(Surface, color, start_pos, end_pos, width=1)
+                多条：
+                    lines(Surface, color, closed, pointlist, width=1)
+                        closed:是否收尾相连
+                抗锯齿：
+                    aaline(Surface, color, start_pos, end_pos, blend=1)
+                    aalines(Surface, color, closed, pointlist, blend=1)
+                        # blend: 是否通过绘制混合背景的阴影实现抗锯齿
+        设置帧率：一秒钟执行10次循环体
+            clock = pygame.time.Clock()
+            clock.tick(10)
+85
+        1、动画精灵：游戏中会动的，为其赋予灵魂的对象
+            pygame提供的精灵基类：pygame.sprite.Sprite --> 支持碰撞检测....
+86
+        1、碰撞检测：
+            spritecollide(sprite, group, dokill, collided = None)
+                sprite: 指定被检测的精灵
+                group: 指定一个组 --》 sprite.Group()
+                dokill: 是否删除组中发生碰撞的精灵
+                collided: 回调函数
+                    collide_circle(left, right): 检测两圆是否发生碰撞，要求精灵要有radius参数
+87
+        1、使用音效；需要初始化 --》 pygame.mixer.init()
+        1、播放音效
+            pygame.mixer.Sound()
+                play(): 播放音乐
+                stop(): 停止播放
+                fadeout(): 淡出
+                set_volume(): 设置音量
+                get_volume():　获取音量
+                get_num_channels():　计算该音效播放了多少次
+                get_length(): 获得该音效的长度
+                get_raw()：将该音效以二进制格式的字符串返回
+        2、播放背景音乐 --> 一次只能播放一个音乐
+            pygame.mixer.music()
+                load(): 载入音乐
+                play(): 播放音乐
+                rewind(): 重新播放
+                stop(): 停止播放
+                pause(): 暂停播放
+                unpause(): 恢复播放
+                fadeout(): 淡出
+                set_volume(): 设置音量
+                get_volume():　获取音量
+                get_busy(): 检测音乐流是否在播放
+                set_pos(): 设置开始播放的位置
+                get_pos(): 获取已经播放的时间
+                queue(): 将音乐文件放入待播放列表中
+                set_endevent(): 在音乐播放完毕时发送事件
+                get_endevent(): 获取音乐播放完毕时发送的事件类型
+        3、自定义事件
+            # 音乐播放完时游戏结束
+            GAMEOVER = USEREVENT
+            pygame.mixer.music.set_endevent(GAMEOVER)
+88
+        1、自定义光标：
+            # 设置默认光标不可见
+            pygame.mouse.set_visible(False)
+            # 自行载入光标图片，通过获取鼠标位置绘制光标位置即可实现自定义光标
+            glass.mouse_rect.left, glass.mouse_rect.top = pygame.mouse.get_pos()
+89
+        1、默认情况下，每次按键无论是长按还是短按pygame都仅作为一次按键事件处理
+            可通过key.set_repeat，启用重复响应按下某个按键
+            set_repeat(delay, interval)
+            --delay: 指定第一次发送事件的延迟时间
+            --interval：指定重复发送事件的时间间隔
+            --如果不带任何参数，表示取消重复发送事件
+            # 设置重复响应按键事件
+            pygame.key.set_repeat(100, 100)
+        2、关闭图形界面
+            pygame.quit()
+            sys.exit()
+        3、双击打开文件出错时显示出错信息并不关闭命令行界面
+            import traceback
+            if __name__ == "__main__":
+                try:
+                    main()
+                except SystemExit:
+                    pass
+                except:
+                    traceback.print_exc()
+                    pygame.quit()
+                    input()
+90
+        1、事件检测方法：
+            方法一：对于偶然触发的事件 通过事件检测
+            方法二：对于频繁触发的事件：key_pressed = pygame.key.get_pressed()
+            
+92、
+        1、只针对非透明部分的碰撞检测
+            需要mask属性支持：self.mask = pygame.mask.from_surface(self.image)
+            enemies_down = pygame.sprite.spritecollide(me, enemies, False, pygame.sprite.collide_mask)
+        2、音效play(-1): 表示循环播放
+94、
+        1、检测鼠标光标当前位置是否在指定位置：collidepoint
+        paused_rect.collidepoint(event.pos)
